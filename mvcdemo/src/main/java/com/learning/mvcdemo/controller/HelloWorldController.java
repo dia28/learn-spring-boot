@@ -3,12 +3,12 @@ package com.learning.mvcdemo.controller;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class HelloWorldController {
     // show initial HTML
-    @RequestMapping("/showForm")
+    @GetMapping("/showForm")
     public String showForm() {
         return "helloworld-form";
     }
@@ -19,12 +19,27 @@ public class HelloWorldController {
         return "helloworld";
     }
 
-    @RequestMapping("/processFormVersionTwo")
-    public String letsShoutDude(HttpServletRequest request, Model model) {
-        String theName = request.getParameter("studentName");
+//    @RequestMapping("/processFormVersionTwo")
+//    public String letsShoutDude(HttpServletRequest request, Model model) {
+//        String theName = request.getParameter("studentName");
+//
+//        theName = theName.toUpperCase();
+//        String result = "Yo! " + theName;
+//
+//        model.addAttribute("message", result);
+//        return "helloworld";
+//    }
+
+//    @RequestMapping(
+//            path="/processFormVersionThree",
+//            method = RequestMethod.GET) // or use directly @GetMapping
+   @PostMapping("/processFormVersionThree")
+    public String letsShoutDude(
+            @RequestParam(name = "studentName") String theName,
+            Model model) {
 
         theName = theName.toUpperCase();
-        String result = "Yo! " + theName;
+        String result = "Yo! Hello, " + theName + "!";
 
         model.addAttribute("message", result);
         return "helloworld";
