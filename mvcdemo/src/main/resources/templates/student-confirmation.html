@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Registration Form</title>
+</head>
+<body>
+
+<h3>Student Confirmation</h3>
+
+The student from
+<span th:text="${student.country} "/>
+is confirmed to be registered:
+<span th:text="${student.firstName} + ' ' + ${student.lastName}"  />
+</body>
+</html>
