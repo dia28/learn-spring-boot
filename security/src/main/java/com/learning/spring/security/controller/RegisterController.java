@@ -38,7 +38,6 @@ public class RegisterController {
 
     @GetMapping("/showRegistrationForm")
     public String showRegistrationForm(Model model) {
-        System.out.println("show registration form");
         model.addAttribute("webUser", new WebUser());
         return "register/registration-form";
     }
@@ -49,7 +48,7 @@ public class RegisterController {
                                           HttpSession session,
                                           Model model) {
         String userName = webUser.getUserName();
-        System.out.println("Processing registration form for user name: " + userName);
+        logger.info("Processing registration form for user name: " + userName);
         if (bindingResult.hasErrors()) {
             return "register/registration-form";
         }
@@ -66,6 +65,6 @@ public class RegisterController {
 
         logger.info("Successfully created user: " + userName);
         session.setAttribute("user", webUser);
-        return "registration-confirmation";
+        return "register/registration-confirmation";
     }
 }

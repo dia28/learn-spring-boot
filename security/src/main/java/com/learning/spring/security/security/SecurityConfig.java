@@ -51,6 +51,7 @@ public class SecurityConfig {
                         configurer.requestMatchers("/").hasRole("EMPLOYEE")
                                 .requestMatchers("/leaders/**").hasRole("MANAGER")
                                 .requestMatchers("/systems/**").hasRole("ADMIN")
+                                .requestMatchers("/register/**").permitAll()
                                 .anyRequest().authenticated()
                 )
                 .formLogin(form ->
