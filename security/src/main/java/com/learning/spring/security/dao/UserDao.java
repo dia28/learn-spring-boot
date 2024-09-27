@@ -4,4 +4,5 @@ import com.learning.spring.security.entity.User;
 
 public interface UserDao {
     User findByUserName(String userName);
+    void save(User user);
 }
